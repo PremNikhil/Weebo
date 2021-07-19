@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Tailwind CSS CDN -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'ecommerce/main.css' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    {% if title %}
+        <title>Weebo-{{ title }}</title>
+    {% else %}
+        <title>Weebo</title>
+    {% endif %} 
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="/">Weebo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link mr-10" href="/">Home</a>
+                <div class="dropdown">
+                  <a class="dropdown-toggle nav-item nav-link" data-toggle="dropdown" href="">Categories</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="/mobile_cov">Mobiles Covers</a></li>
+                      <li><a class="dropdown-item" href="/laptop_cov">Laptops Covers</a></li>
+                      <li><a class="dropdown-item" href="/paintings">Art</a></li>
+                      <li><a class="dropdown-item" href="/clothing">Clothing</a></li>
+                  </ul>
+                </div>
+                
+                
+              </div>
+              <!-- Navbar Right Side -->
+              <div class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                  <a class="nav-item nav-link mr-6" href="/cart">My Cart</a>
+                  <a class="nav-item nav-link mr-6" href="/myorders">My Orders</a>
+                  <a class="nav-item nav-link mr-6" href="/Profile">Profile</a>
+                  <a class="nav-item nav-link mr-6" href="/Logout">Logout</a>
+                  <a class="nav-item nav-link mr-6" href="/about">About</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="/Login">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'Register' %}">Register</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% block content %}{% endblock %}
+          </div>
+          
+        </div>
+    </main>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+</body>
+</html>

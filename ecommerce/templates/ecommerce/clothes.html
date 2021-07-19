@@ -1,0 +1,18 @@
+
+{%extends "ecommerce/base.html" %}
+{% block content %}
+    <h1>Clothings</h1>
+    {% for clothing in clothings %}
+        <div class="flex flex-warp text-center bg-white rounded-lg shadow-lg items-center justify-center mt-80 mb-80" style="height: 20%;"> 
+            <img class="res-image mx-auto object-cover rounded-lg" src="{{ clothing.image.url }}" width="270" 
+     height="310" alt="">
+            <div class="flex flex-col items-center justify-center">
+                <h2 class="mr-20">{{ clothing.name }}</h2>
+                <p class="mr-20">Price: ₹{{ clothing.price }}</p>
+                <p class="mr-20">Rating: {{ clothing.rating }}⭐</p>
+                <a href="/ordered"><button type="button" class="btn btn-primary mr-20" >Buy</button></a>
+            </div>
+        </div>
+    {% endfor %}
+    
+{% endblock content %}

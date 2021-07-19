@@ -1,0 +1,12 @@
+{% extends "ecommerce/base.html" %}
+{%block content%}
+<h2>Sayonara, You have been logged out</h2>
+  <div class = "border-top pt-3">
+      <small class="text-muted"> <a href = "{% url 'Login' %}">Moshi Moshi, Login again?</a>
+      </small>
+</div>
+<div>
+      <small class="text-muted"> <a href = "{% url 'Site-Home' %}">Or, Go Home.</a>
+      </small>
+      </div>
+{%endblock content%}

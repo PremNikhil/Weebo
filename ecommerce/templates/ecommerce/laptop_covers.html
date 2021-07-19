@@ -1,0 +1,17 @@
+{%extends "ecommerce/base.html" %}
+{% block content %}
+<h1>Laptop Covers</h1>
+    {% for laptop_cover in laptop_covers %}
+        <div class="flex flex-warp text-center bg-white rounded-lg shadow-lg items-center justify-center mt-80 mb-80" style="height: 30%;"> 
+            <img class="res-image mx-auto object-cover rounded-lg" src="{{ laptop_cover.image.url }}" width="270" 
+     height="310" alt="Image here">
+            <div class="flex flex-col items-center justify-center">
+                <h2 class="mr-20">{{ laptop_cover.name }}</h2>
+                <p class="mr-20">Price: ₹{{ laptop_cover.price }}</p>
+                <p class="mr-20">Rating: {{ laptop_cover.rating }}⭐</p>
+                <a href="/ordered"><button type="button" class="btn btn-primary mr-20" >Buy</button></a>
+            </div>
+        </div>
+    {% endfor %}
+    
+{% endblock content %}
